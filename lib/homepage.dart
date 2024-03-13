@@ -21,15 +21,7 @@ class _HomepageState extends State<Homepage> {
     'assets/b5.jpg',
   ];
 
-  int _currentIndex = 0;
-
-  final Map<String, Widget> _pages = {
-    'Home': const Homepage(),
-    'You': const PlaceholderWidget('You'),
-    'More': const PlaceholderWidget('More'),
-    'Cart': const PlaceholderWidget('Cart'),
-    'Menu': const PlaceholderWidget('Menu'),
-  };
+  
   late TextEditingController _searchController;
   List<dynamic> items = [];
   List<dynamic> filteredItems = [];
@@ -680,48 +672,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
           ),
-          bottomSheet: _pages[_currentIndex],
-          bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(
-              textTheme: const TextTheme(
-                bodyMedium: TextStyle(color: Colors.black),
-              ),
-            ),
-            child: BottomNavigationBar(
-              currentIndex: _currentIndex,
-              selectedItemColor: Colors.black,
-              onTap: (int index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              selectedLabelStyle: const TextStyle(color: Colors.black),
-              unselectedLabelStyle: const TextStyle(color: Colors.black),
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home_outlined, color: Colors.black),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline, color: Colors.black),
-                  label: 'You',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.more_horiz_sharp, color: Colors.black),
-                  label: 'More',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart_checkout_outlined,
-                      color: Colors.black),
-                  label: 'Cart',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.menu_outlined, color: Colors.black),
-                  label: 'Menu',
-                ),
-              ],
-            ),
-          ),
+      
         ));
   }
 }

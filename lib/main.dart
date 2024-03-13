@@ -1,3 +1,4 @@
+import 'package:amazonclone/home.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class _SplashState extends State<Splash> {
     super.initState();
     Future.delayed(const Duration(milliseconds: 2000)).then((value) => {
           Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const Homepage()))
+              MaterialPageRoute(builder: (context) => const BottomNavigationBarExampleApp()))
         });
   }
 
@@ -49,7 +50,7 @@ class _SplashState extends State<Splash> {
                 'assets/logo.png',
                 height: MediaQuery.of(context).size.height / 3,
               ),
-              nextScreen: const Homepage(),
+              nextScreen: const BottomNavigationBarExampleApp(),
               splashTransition: SplashTransition.scaleTransition,
               duration: 1000,
             ),
