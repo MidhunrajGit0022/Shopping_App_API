@@ -21,7 +21,6 @@ class _HomepageState extends State<Homepage> {
     'assets/b5.jpg',
   ];
 
-  
   late TextEditingController _searchController;
   List<dynamic> items = [];
   List<dynamic> filteredItems = [];
@@ -672,7 +671,6 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
           ),
-      
         ));
   }
 }

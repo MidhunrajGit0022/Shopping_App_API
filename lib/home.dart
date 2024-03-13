@@ -31,13 +31,11 @@ class _BottomNavigationBarExampleState
       'Index 1: You',
     ),
     Text(
-      'Index 2: School',
+      'Index 2: More ',
     ),
+    // cart(),
     Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 2: School',
+      'Index 2: Menu',
     ),
   ];
 
@@ -60,7 +58,7 @@ class _BottomNavigationBarExampleState
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.black),
+            icon: Icon(Icons.person_2_outlined, color: Colors.black),
             label: 'You',
           ),
           BottomNavigationBarItem(
@@ -68,11 +66,12 @@ class _BottomNavigationBarExampleState
             label: 'More',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_rounded, color: Colors.black),
+            icon: Icon(Icons.shopping_cart_checkout_outlined,
+                color: Colors.black),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu_rounded, color: Colors.black),
+            icon: Icon(Icons.menu_outlined, color: Colors.black),
             label: 'Menu',
           ),
         ],

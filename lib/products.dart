@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:amazonclone/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart' as http;
@@ -11,14 +12,6 @@ class Products extends StatefulWidget {
   @override
   State<Products> createState() => _ProductsState();
 }
-
-// class ProductItem {
-//   final num id;
-
-//   ProductItem({
-//     required this.id,
-//   });
-// }
 
 class _ProductsState extends State<Products> {
   int _currentIndex = 0;
@@ -357,7 +350,14 @@ class _ProductsState extends State<Products> {
                                         child: Column(
                                           children: [
                                             ElevatedButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                           cart(id: itemdata['id'])),
+                                                );
+                                              },
                                               style: ButtonStyle(
                                                 backgroundColor:
                                                     MaterialStateProperty.all<
