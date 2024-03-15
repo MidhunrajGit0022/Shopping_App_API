@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:amazonclone/cart.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,13 @@ import 'package:http/http.dart' as http;
 
 class Products extends StatefulWidget {
   final int id;
-  const Products({Key? key, required this.id}) : super(key: key);
+  final List<dynamic> cartitem;
+
+  const Products({
+    Key? key,
+    required this.id,
+    required this.cartitem,
+  }) : super(key: key);
 
   @override
   State<Products> createState() => _ProductsState();
@@ -49,6 +56,24 @@ class _ProductsState extends State<Products> {
       } else {
         throw Exception('Failed to load data');
       }
+    }
+  }
+
+  void addtocart() {
+    if (itemdata.isNotEmpty) {
+      setState(() {
+        widget.cartitem.add(itemdata);
+      });
+
+      for (var item in widget.cartitem) {
+        log(item.toString());
+      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => cart(arraydata: widget.cartitem),
+        ),
+      );
     }
   }
 
@@ -351,12 +376,7 @@ class _ProductsState extends State<Products> {
                                           children: [
                                             ElevatedButton(
                                               onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                           cart(id: itemdata['id'])),
-                                                );
+                                                addtocart();
                                               },
                                               style: ButtonStyle(
                                                 backgroundColor:

@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+  final List<dynamic> cartitem;
+
+  const Homepage({
+    Key? key,
+    required this.cartitem,
+  }) : super(key: key);
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -20,11 +25,9 @@ class _HomepageState extends State<Homepage> {
     'assets/b4.jpg',
     'assets/b5.jpg',
   ];
-
   late TextEditingController _searchController;
   List<dynamic> items = [];
   List<dynamic> filteredItems = [];
-
   @override
   void initState() {
     super.initState();
@@ -82,6 +85,8 @@ class _HomepageState extends State<Homepage> {
   void dispose() {
     super.dispose();
   }
+
+  // dynamic cartitem = [];
 
   @override
   Widget build(BuildContext context) {
@@ -521,7 +526,7 @@ class _HomepageState extends State<Homepage> {
                                                 0.02,
                                           ),
                                           child: Card(
-                                            elevation: 6.0,
+                                            elevation: 5.0,
                                             color: Colors.grey.shade50,
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
@@ -538,8 +543,10 @@ class _HomepageState extends State<Homepage> {
                                                         MaterialPageRoute(
                                                           builder: (context) =>
                                                               Products(
-                                                                  id: data[
-                                                                      "id"]),
+                                                            id: data["id"],
+                                                            cartitem:
+                                                                widget.cartitem,
+                                                          ),
                                                         ),
                                                       );
                                                     },

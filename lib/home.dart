@@ -1,3 +1,4 @@
+import 'package:amazonclone/cart.dart';
 import 'package:amazonclone/homepage.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class BottomNavigationBarExampleApp extends StatelessWidget {
 }
 
 class BottomNavigationBarExample extends StatefulWidget {
-  const BottomNavigationBarExample({super.key});
+  const BottomNavigationBarExample({Key? key}) : super(key: key);
 
   @override
   State<BottomNavigationBarExample> createState() =>
@@ -23,21 +24,8 @@ class BottomNavigationBarExample extends StatefulWidget {
 
 class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
+  dynamic cartitem = [];
   int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Homepage(),
-    Text(
-      'Index 1: You',
-    ),
-    Text(
-      'Index 2: More ',
-    ),
-    // cart(),
-    Text(
-      'Index 2: Menu',
-    ),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -47,9 +35,23 @@ class _BottomNavigationBarExampleState
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> widgetOptions = <Widget>[
+      Homepage(cartitem: cartitem),
+      const Text(
+        'Index 1: You',
+      ),
+      const Text(
+        'Index 2: More ',
+      ),
+      cart(arraydata: cartitem),
+      const Text(
+        'Index 2: Menu',
+      ),
+    ];
+
     return Scaffold(
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

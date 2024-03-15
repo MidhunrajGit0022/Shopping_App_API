@@ -1,41 +1,46 @@
-import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:http/http.dart' as http;
 
 class cart extends StatefulWidget {
-  final int id;
+  final List<dynamic> arraydata;
 
-  const cart({super.key, required this.id});
+  const cart({Key? key, required this.arraydata}) : super(key: key);
 
   @override
   _cartState createState() => _cartState();
 }
 
 class _cartState extends State<cart> {
-  Map<String, dynamic> itemdata = {};
+  List<Map<String, dynamic>> itemdata = [];
+  // List itemdata= widget.arraydata;
 
   @override
   void initState() {
     super.initState();
-    fetchData(widget.id);
+    fetchData();
   }
 
-  Future<void> fetchData(int id) async {
-    final response =
-        await http.get(Uri.parse('https://fakestoreapi.com/products/$id'));
+  Future<void> fetchData() async {
+    // for (String id in widget.arraydata) {
 
-    if (mounted) {
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> data = json.decode(response.body);
-        setState(() {
-          itemdata = data;
-        });
-      } else {
-        throw Exception('Failed to load data');
-      }
+    for (var item in widget.arraydata) {
+      itemdata.add(item);
+      log(item.toString());
     }
+    // final response =
+    //     await http.get(Uri.parse('https://fakestoreapi.com/products/$id'));
+
+    // if (response.statusCode == 200) {
+    //   final Map<String, dynamic> data = json.decode(response.body);
+    //   setState(() {
+    //     itemdata.add(data);
+    //   });
+    // } else {
+    //   throw Exception('Failed to load data');
+    // }
+    // }
   }
 
   @override
@@ -119,8 +124,9 @@ class _cartState extends State<cart> {
           ),
         ),
         body: ListView.builder(
-          itemCount: itemdata.isNotEmpty ? 1 : 0,
+          itemCount: widget.arraydata.length,
           itemBuilder: (BuildContext context, int index) {
+            final item = widget.arraydata[index];
             return ListTile(
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -139,7 +145,7 @@ class _cartState extends State<cart> {
                           child: Row(
                             children: [
                               Image.network(
-                                itemdata["image"],
+                                item["image"],
                                 height:
                                     MediaQuery.of(context).size.height * 0.15,
                               ),
@@ -153,7 +159,7 @@ class _cartState extends State<cart> {
                                     width: MediaQuery.of(context).size.width *
                                         0.56,
                                     child: Text(
-                                      itemdata["title"].toString(),
+                                      item["title"].toString(),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
                                       style: const TextStyle(
@@ -166,7 +172,7 @@ class _cartState extends State<cart> {
                                     height: 5,
                                   ),
                                   Text(
-                                    "₹ ${itemdata["price"].toString()}",
+                                    "₹ ${item["price"].toString()}",
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
@@ -177,13 +183,13 @@ class _cartState extends State<cart> {
                                     style: TextStyle(color: Colors.green),
                                   ),
                                   Text(
-                                    itemdata['category'],
+                                    item['category'],
                                     style: TextStyle(
                                         fontSize: 10,
                                         color: Colors.grey.shade500),
                                   ),
                                   RatingBar(
-                                    initialRating: itemdata["rating"]["rate"],
+                                    initialRating: item["rating"]["rate"],
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
                                     itemCount: 5,
@@ -199,6 +205,13 @@ class _cartState extends State<cart> {
                                     ),
                                     onRatingUpdate: (value) {},
                                   ),
+                                  IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          widget.arraydata.removeAt(index);
+                                        });
+                                      },
+                                      icon: const Icon(Icons.delete))
                                 ],
                               ),
                             ],
