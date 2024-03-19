@@ -1,5 +1,6 @@
 import 'package:amazonclone/cart.dart';
 import 'package:amazonclone/homepage.dart';
+import 'package:amazonclone/you.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarExampleApp extends StatelessWidget {
@@ -37,9 +38,7 @@ class _BottomNavigationBarExampleState
   Widget build(BuildContext context) {
     final List<Widget> widgetOptions = <Widget>[
       Homepage(cartitem: cartitem),
-      const Text(
-        'Index 1: You',
-      ),
+      const you(),
       const Text(
         'Index 2: More ',
       ),
