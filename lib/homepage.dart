@@ -86,7 +86,7 @@ class _HomepageState extends State<Homepage> {
     super.dispose();
   }
 
-  // dynamic cartitem = [];
+  dynamic cartitem = [];
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +102,8 @@ class _HomepageState extends State<Homepage> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Colors.blue.shade300,
-                      Colors.cyan,
+                      Colors.cyan.shade300,
+                      const Color.fromARGB(146, 178, 235, 242),
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,

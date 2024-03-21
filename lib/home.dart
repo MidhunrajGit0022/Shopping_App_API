@@ -1,5 +1,6 @@
 import 'package:amazonclone/cart.dart';
 import 'package:amazonclone/homepage.dart';
+import 'package:amazonclone/menu.dart';
 import 'package:amazonclone/you.dart';
 import 'package:flutter/material.dart';
 
@@ -39,13 +40,11 @@ class _BottomNavigationBarExampleState
     final List<Widget> widgetOptions = <Widget>[
       Homepage(cartitem: cartitem),
       const you(),
-      const Text(
-        'Index 2: More ',
-      ),
+      // const Text(
+      //   'Index 2: More ',
+      // ),
       cart(arraydata: cartitem),
-      const Text(
-        'Index 2: Menu',
-      ),
+      const Menu(),
     ];
 
     return Scaffold(
@@ -62,10 +61,10 @@ class _BottomNavigationBarExampleState
             icon: Icon(Icons.person_2_outlined, color: Colors.black),
             label: 'You',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz, color: Colors.black),
-            label: 'More',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.more_horiz, color: Colors.black),
+          //   label: 'More',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_checkout_outlined,
                 color: Colors.black),

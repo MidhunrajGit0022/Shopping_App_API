@@ -28,8 +28,8 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(milliseconds: 2000)).then((value) => {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const BottomNavigationBarExampleApp()))
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => const BottomNavigationBarExampleApp()))
         });
   }
 
@@ -49,7 +49,7 @@ class _SplashState extends State<Splash> {
                 height: MediaQuery.of(context).size.height / 3,
               ),
               nextScreen: const BottomNavigationBarExampleApp(),
-              splashTransition: SplashTransition.scaleTransition,
+              splashTransition: SplashTransition.fadeTransition,
               duration: 1000,
             ),
           ),

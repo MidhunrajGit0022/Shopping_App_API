@@ -99,8 +99,8 @@ class _ProductsState extends State<Products> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.blue.shade300,
-                  Colors.cyan,
+                  Colors.cyan.shade300,
+                  const Color.fromARGB(146, 178, 235, 242),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -847,10 +847,10 @@ class _ProductsState extends State<Products> {
                 icon: Icon(Icons.person_outline, color: Colors.black),
                 label: 'You',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.more_horiz_sharp, color: Colors.black),
-                label: 'More',
-              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(Icons.more_horiz_sharp, color: Colors.black),
+              //   label: 'More',
+              // ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart_checkout_outlined,
                     color: Colors.black),

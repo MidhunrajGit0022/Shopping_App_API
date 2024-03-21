@@ -65,8 +65,8 @@ class _cartState extends State<cart> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.blue.shade300,
-                  Colors.cyan,
+                  Colors.cyan.shade300,
+                  const Color.fromARGB(146, 178, 235, 242),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -136,7 +136,9 @@ class _cartState extends State<cart> {
                     height: 10,
                   ),
                   Container(
-                    color: Colors.grey.shade200,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10)),
                     width: MediaQuery.of(context).size.width,
                     child: Row(
                       children: [
@@ -157,7 +159,7 @@ class _cartState extends State<cart> {
                                 children: [
                                   SizedBox(
                                     width: MediaQuery.of(context).size.width *
-                                        0.56,
+                                        0.50,
                                     child: Text(
                                       item["title"].toString(),
                                       overflow: TextOverflow.ellipsis,
@@ -205,18 +207,22 @@ class _cartState extends State<cart> {
                                     ),
                                     onRatingUpdate: (value) {},
                                   ),
-                                  IconButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          widget.arraydata.removeAt(index);
-                                        });
-                                      },
-                                      icon: const Icon(Icons.delete))
                                 ],
                               ),
                             ],
                           ),
-                        )
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.arraydata.removeAt(index);
+                              });
+                            },
+                            icon: const Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                              size: 30,
+                            ))
                       ],
                     ),
                   )
