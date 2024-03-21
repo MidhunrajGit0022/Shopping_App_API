@@ -146,10 +146,13 @@ class _cartState extends State<cart> {
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
                             children: [
-                              Image.network(
-                                item["image"],
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
+                              SizedBox(
+                                width: screenSize.width * 0.2,
+                                child: Image.network(
+                                  item["image"],
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
