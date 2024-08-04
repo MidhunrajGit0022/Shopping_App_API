@@ -97,8 +97,8 @@ class _MenuState extends State<Menu> {
                 const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
-                  height: screenSize.height * 0.8,
+                Expanded(
+                  
                   child: SizedBox(
                     child: SingleChildScrollView(
                       physics: const AlwaysScrollableScrollPhysics(

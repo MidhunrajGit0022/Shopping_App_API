@@ -9,9 +9,10 @@ class Amazon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: const Splash(),
+      theme: ThemeData(useMaterial3: false),
     );
   }
 }
